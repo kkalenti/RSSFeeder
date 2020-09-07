@@ -1,0 +1,32 @@
+﻿@model RSSFeeder.ViewModels.ApplicationSettingViewModel
+
+@{
+    ViewData["Title"] = "ApplicationSettings";
+}
+
+
+<div class="row">
+    <h1>Настройки приложения</h1>
+    <div class="col-12 card p-3">
+        <div>
+            <form asp-action="ApplicationSettings">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="UpdateTime" class="control-label"></label>
+                    <input asp-for="UpdateTime" class="form-control" />
+                    <span asp-validation-for="UpdateTime" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsDescriptionFormatted" /> @Html.DisplayNameFor(model => model.IsDescriptionFormatted)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Применить" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

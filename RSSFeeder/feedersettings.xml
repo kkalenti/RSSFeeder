@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <FeederSettings>
+    <RssFeed>
+      <Name>Хабр</Name>
+      <RSSUrl>https://habr.com/rss/interesting/</RSSUrl>
+    </RssFeed>
+    <UpdateTime>5</UpdateTime>
+  </FeederSettings>
+</settings>

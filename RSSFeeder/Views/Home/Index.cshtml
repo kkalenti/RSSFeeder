@@ -1,0 +1,50 @@
+﻿@model RSSFeeder.ViewModels.IndexViewModel
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<div class="row">
+    <div class="jumbotron container-fluid p-3">
+        <h4>Список лент:</h4>
+        @if (Model.FeedNameList == null || !Model.FeedNameList.Any())
+        {
+            <p>
+                Ни одной ленты не найдено
+            </p>
+        }
+        else
+        {
+            <div class="scrollableDiv list-group list-group-horizontal col-12">
+                @foreach (var item in Model.FeedNameList)
+                {
+                    <a asp-controller="Home" asp-action="Index" asp-route-id="@item.Id"
+                       class="list-group-item list-group-item-action col-3 m-2 text-truncate text-nowrap">@item.FeedName</a>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<div id="partial">
+    @Html.Partial("Home/_FeedContent", @Model.MainRssFeed)
+</div>
+
+@section Scripts
+{
+    <script>
+        setInterval(pr, @ViewBag.UpdateTime, @Model?.MainRssFeed?.Id);
+
+        function pr(id) {
+            $.ajax({
+                url: '@Url.Action("FeedItemList","Home")',
+                type: 'GET',
+                data: { id: id },
+                success: function (result) {
+                    $("#partial").html(result);
+                }
+            });
+        }
+
+    </script>
+}

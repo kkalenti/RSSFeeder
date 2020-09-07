@@ -1,0 +1,15 @@
+﻿@model RSSFeeder.Models.MainRSSFeedModel
+
+@if (Model != null)
+{
+    <h1>Лента "@Model.FeedName"</h1>
+
+    <div class="row">
+        @Html.Partial("Home/_FeedList", Model.FeedItems)
+    </div>
+
+}
+else
+{
+    <h1>Не удалось найти выбранную ленту</h1>
+}
